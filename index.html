@@ -6,6 +6,7 @@
     <title>Web Pengajian</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <header class="main-header">
@@ -17,6 +18,7 @@
         <ul>
             <li><a href="index.html">Beranda</a></li>
             <li><a href="daftar-surat.html">Al-Qur'an</a></li>
+            <li><a href="#login">Login</a></li>
             <li><a href="#jadwal">Jadwal Pengajian</a></li>
             <li><a href="#tentang">Tentang Kami</a></li>
              <li><a href="#donasi">donasi</a></li>
@@ -49,7 +51,19 @@
             </div>
             <p>Mohon konfirmasi setelah melakukan donasi melalui WhatsApp ke nomor 081264743344</p>
         </section>
-
+        
+         <section id="login">
+            <h2>Masuk ke Akun Anda</h2>
+            <p>Untuk akses ke fitur khusus, silakan masuk menggunakan akun Google Anda.</p>
+            <div class="login-button-container">
+                <div id="g_id_onload"
+                    data-client_id="18920084718-vfhdcuhekfticgbrkr3dmff5ue65c22c.apps.googleusercontent.com"
+                    data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
+            </div>
+        </section>
+        
         <section id="tentang">
             <h2>Tentang Kami</h2>
             <p>Kami adalah komunitas yang bersemangat untuk menyebarkan ilmu Islam...</p>
@@ -91,6 +105,28 @@
     <footer class="main-footer">
         <p>&copy; 2025 Majelis Ilmu. Hak Cipta Dilindungi.</p>
     </footer>
-</body>
 
+    <script>
+        function handleCredentialResponse(response) {
+            // Kode ini akan dijalankan setelah pengguna berhasil login
+            // "response.credential" berisi token yang perlu diverifikasi di server
+            console.log("Token ID Google: " + response.credential);
+            
+            // Di sini adalah tempat Anda mengirim token ke server (backend)
+            // untuk diverifikasi dan membuat sesi login.
+            // Contoh:
+            // fetch('/api/login-google', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({ token: response.credential })
+            // }).then(res => res.json()).then(data => {
+            //     console.log('Login berhasil:', data);
+            //     window.location.href = '/dashboard-user';
+            // });
+        }
+    </script>
+</body>
 </html>
+
